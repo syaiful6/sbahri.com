@@ -26,14 +26,12 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Build site with Hugo
-        run: nix develop --command hugo --minify
+        run: nix develop --command bun run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: sbahri-blog
-          directory: public
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+          gitHubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          command: pages deploy public --project-name=sbahri-blog
