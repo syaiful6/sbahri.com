@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="home">
+  <div class="page-content">
+    <p>
+    I'm Syaiful Bahri, software developer and blogger living in Indonesia.
+    </p>
+    <p>I spend my spare time contributing to open source, mostly on functional programming ecosystem.</p>
+  </div>
+
+  <h2>Recent Posts</h2>
+
+  {{ $pages := where .Site.RegularPages "Type" "in" (slice "posts" "post") }}
+  {{ if $pages }}
+  <ul class="post-list">
+    {{ range first 10 $pages }}
+    <li class="post-item post-item__home">
+      <h3 class="post-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h3>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format " 2006-01-02" }}">
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+        <div class="post-meta-tags">
+          {{ range .Params.tags }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+          {{ end }}
+        </div>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ end }}

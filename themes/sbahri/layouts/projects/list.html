@@ -1,0 +1,52 @@
+{{ define "main" }}
+<div class="projects-container">
+  {{ if .Content }}
+  <div class="page-content">
+    {{ .Content }}
+  </div>
+  {{ end }}
+
+  {{ if .Pages }}
+  <div class="projects-grid">
+    {{ range .Pages }}
+    <article class="project-card">
+      <div class="project-card-header">
+        <h2 class="project-title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+        {{ if .Params.language }}
+        <span class="project-language">{{ .Params.language }}</span>
+        {{ end }}
+      </div>
+
+      {{ if .Params.description }}
+      <p class="project-description">{{ .Params.description }}</p>
+      {{ else if .Summary }}
+      <p class="project-description">{{ .Summary }}</p>
+      {{ end }}
+
+      {{ if .Params.tech_stack }}
+      <div class="project-tech-stack">
+        {{ range .Params.tech_stack }}
+        <span class="tech-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <div class="project-links">
+        {{ if .Params.github_url }}
+        <a href="{{ .Params.github_url }}" class="project-link" target="_blank" rel="noopener">GitHub</a>
+        {{ end }}
+        {{ if .Params.demo_url }}
+        <a href="{{ .Params.demo_url }}" class="project-link" target="_blank" rel="noopener">Live Demo</a>
+        {{ end }}
+        <a href="{{ .RelPermalink }}" class="project-link">Details →</a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

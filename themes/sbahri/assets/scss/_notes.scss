@@ -1,0 +1,65 @@
+@use "variables" as *;
+
+// Notes list
+.notes-list {
+  list-style: none;
+  padding: 0;
+
+  .note-item {
+    display: flex;
+    gap: $spacing-md;
+    align-items: baseline;
+    padding: $spacing-xs 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: all $transition-base;
+
+    &:hover {
+      .note-link {
+        color: var(--color-accent);
+      }
+    }
+
+    .note-date {
+      color: var(--color-text-secondary);
+      font-size: $font-size-small;
+      white-space: nowrap;
+      min-width: 100px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .note-link {
+      color: var(--color-text);
+      flex: 1;
+      transition: color $transition-base;
+    }
+  }
+}
+
+// Single note page
+.note {
+  .note-header {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid var(--color-border);
+
+    .note-title {
+      font-size: 2rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    .note-meta {
+      color: var(--color-text-secondary);
+      font-size: $font-size-small;
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .note-content {
+    line-height: 1.8;
+
+    h2, h3, h4, h5, h6 {
+      margin-top: $spacing-lg;
+      margin-bottom: $spacing-md;
+    }
+  }
+}

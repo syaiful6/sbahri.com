@@ -1,0 +1,64 @@
+{{ define "main" }}
+<article class="project">
+  <header class="project-header">
+    <h1 class="project-title">{{ .Title }}</h1>
+
+    <div class="project-meta">
+      {{ if .Params.language }}
+      <span class="project-language-badge">{{ .Params.language }}</span>
+      {{ end }}
+      <time datetime="{{ .Date.Format " 2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+    </div>
+
+    {{ if .Params.tech_stack }}
+    <div class="project-tech-stack">
+      {{ range .Params.tech_stack }}
+      <span class="tech-tag">{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if or .Params.github_url .Params.demo_url }}
+    <div class="project-links-header">
+      {{ if .Params.github_url }}
+      <a href="{{ .Params.github_url }}" class="project-link-btn" target="_blank" rel="noopener">
+        View on GitHub
+      </a>
+      {{ end }}
+      {{ if .Params.demo_url }}
+      <a href="{{ .Params.demo_url }}" class="project-link-btn" target="_blank" rel="noopener">
+        Live Demo
+      </a>
+      {{ end }}
+      {{ if .Params.documentation_url }}
+      <a href="{{ .Params.documentation_url }}" class="project-link-btn project-link-btn__documentation" target="_blank"
+        rel="noopener">
+        Documentation
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="project-content">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ if or .PrevInSection .NextInSection }}
+<nav class="pagination">
+  <div>
+    {{ if .PrevInSection }}
+    <a href="{{ .PrevInSection.RelPermalink }}" class="page-link">← {{ .PrevInSection.Title }}</a>
+    {{ end }}
+  </div>
+  <div>
+    {{ if .NextInSection }}
+    <a href="{{ .NextInSection.RelPermalink }}" class="page-link">{{ .NextInSection.Title }} →</a>
+    {{ end }}
+  </div>
+</nav>
+{{ end }}
+{{ end }}

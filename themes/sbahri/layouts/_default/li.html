@@ -1,0 +1,49 @@
+{{ $imageResource := "" }}
+{{ $imageFilename := "" }}
+{{ if .Page.Params.hero_image }}
+{{ $imageFilename = .Page.Params.hero_image }}
+{{ else if .Page.Params.banner_image }}
+{{ $imageFilename = .Page.Params.banner_image }}
+{{ end }}
+
+{{ if $imageFilename }}
+{{ $imageResource = .Page.Resources.GetMatch $imageFilename }}
+{{ end }}
+
+
+<li class="post-item">
+  {{ if $imageResource }}
+  <figure class="post-image">
+    {{ partial "image.html" (dict "image" $imageResource "sizes" "(min-width: 768px) 400px, 98vw" "photoWidths"
+    .Site.Params.photoWidths) }}
+  </figure>
+  {{ end }}
+  <div class="post-item__content">
+    <h2 class="post-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format " 2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      {{ if .Params.tags }}
+      <span>•</span>
+      <span>{{ len .Params.tags }} tag{{ if ne (len .Params.tags) 1 }}s{{ end }}</span>
+      {{ end }}
+      {{ if .ReadingTime }}
+      <span>•</span>
+      <span>{{ .ReadingTime }} min read</span>
+      {{ end }}
+    </div>
+    {{ if .Summary }}
+    <p class="post-summary">{{ .Summary }}</p>
+    {{ end }}
+    {{ if .Params.tags }}
+    <div class="tags">
+      {{ range .Params.tags }}
+      <a href="{{ " /tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</li>

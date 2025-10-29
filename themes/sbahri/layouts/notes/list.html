@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="notes-container">
+  {{ if .Content }}
+  <div class="page-content">
+    {{ .Content }}
+  </div>
+  {{ end }}
+
+  {{ if .Pages }}
+  <ul class="notes-list">
+    {{ range .Pages }}
+    <li class="note-item">
+      <time datetime="{{ .Date.Format "2006-01-02" }}" class="note-date">
+        {{ .Date.Format "Jan 2, 2006" }}
+      </time>
+      <a href="{{ .RelPermalink }}" class="note-link">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

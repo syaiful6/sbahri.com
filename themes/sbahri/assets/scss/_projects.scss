@@ -1,0 +1,203 @@
+@use "variables" as *;
+
+// Projects grid
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+// Project card
+.project-card {
+  padding: $spacing-md;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-sm;
+
+    .project-title {
+      font-size: 1.25rem;
+      margin: 0;
+      flex: 1;
+
+      a {
+        color: var(--color-blue);
+        font-weight: 700;
+
+        &:hover {
+          color: var(--color-accent);
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .project-language {
+      padding: 0.25rem 0.5rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: $border-radius;
+      font-size: $font-size-small;
+      color: var(--color-text);
+      white-space: nowrap;
+    }
+  }
+
+  .project-description {
+    color: var(--color-text);
+    font-size: $font-size-small;
+    line-height: 1.6;
+    margin-bottom: $spacing-md;
+  }
+
+  .project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-md;
+
+    .tech-tag {
+      padding: 0.25rem 0.5rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: $border-radius;
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  .project-links {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: $spacing-sm;
+    border-top: 1px solid var(--color-border);
+
+    .project-link {
+      padding: 0.25rem 0.75rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: $border-radius;
+      font-size: $font-size-small;
+      color: var(--color-text);
+      transition: all $transition-base;
+
+      &:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+  }
+}
+
+// Single project page
+.project {
+  .project-header {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid var(--color-border);
+
+    .project-title {
+      font-size: 2rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: $spacing-sm;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: $spacing-sm;
+      font-size: $font-size-small;
+      color: var(--color-text);
+      font-style: italic;
+
+      .project-language-badge {
+        padding: 0.25rem 0.75rem;
+        background-color: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: $border-radius;
+        color: var(--color-accent);
+        font-weight: 500;
+      }
+    }
+
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-xs;
+      margin-bottom: $spacing-md;
+
+      .tech-tag {
+        padding: 0.25rem 0.75rem;
+        background-color: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: $border-radius;
+        font-size: $font-size-small;
+        color: var(--color-text-secondary);
+      }
+    }
+
+    .project-links-header {
+      display: flex;
+      gap: $spacing-sm;
+      flex-wrap: wrap;
+
+      .project-link-btn {
+        padding: $spacing-xs $spacing-md;
+        background-color: var(--color-accent);
+        border: 1px solid var(--color-accent);
+        color: var(--color-bg);
+        border-radius: $border-radius;
+        font-weight: 500;
+        transition: all $transition-base;
+
+        &:hover {
+          background-color: var(--color-bg);
+          color: var(--color-text);
+          border: 1px solid var(--color-accent);
+          transform: translateY(-1px);
+        }
+
+        &__documentation {
+          background-color: var(--color-green);
+          border: 1px solid var(--color-green);
+          color: var(--color-bg);
+
+          &:hover {
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-green);
+            color: var(--color-text);
+          }
+        }
+
+      }
+    }
+  }
+
+  .project-content {
+    line-height: 1.8;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: $spacing-lg;
+      margin-bottom: $spacing-md;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use "variables" as *;
+
+.img {
+  &.align-left {
+    float: left;
+    margin-right: $spacing-md;
+  }
+
+  &.align-right {
+    float: right;
+    margin-left: $spacing-md;
+  }
+}

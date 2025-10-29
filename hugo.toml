@@ -1,0 +1,63 @@
+baseURL = 'https://sbahri.com/'
+languageCode = 'en-us'
+title = 'Syaiful Bahri'
+theme = 'sbahri'
+
+# Pagination
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = "Sharing my journey in coding, technology, and life."
+  author = "Syaiful Bahri"
+  photoWidths = [300, 600, 800, 1200]
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "notes"
+    name = "Notes"
+    url = "/notes/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 40
+
+[markup.highlight]
+  style = "tokyonight-night"
+
+# Disable Hugo's built-in syntax highlighting
+# We're using Shiki at build-time instead
+# [markup.highlight]
+#   codeFences = false
+#   noClasses = false
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+# Enable RSS
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "feed"
+
+# Taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"

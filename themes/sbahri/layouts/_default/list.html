@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="post-list-container">
+  {{ if .Content }}
+  <div class="page-content">
+    {{ .Content }}
+  </div>
+  {{ end }}
+
+  {{ if .Pages }}
+  <ul class="post-list">
+    {{- range .Pages -}}
+    {{- .Render "li" -}}
+    {{- end -}}
+  </ul>
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

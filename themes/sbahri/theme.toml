@@ -1,0 +1,11 @@
+name = "Sbahri"
+license = "MIT"
+description = "A custom minimal theme for developer blog"
+homepage = "https://sbahri.com"
+min_version = "0.100.0"
+
+[author]
+  name = "Sbahri"
+  homepage = "https://sbahri.com"
+
+features = ["syntax-highlighting", "responsive", "minimal"]

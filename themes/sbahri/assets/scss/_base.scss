@@ -1,0 +1,167 @@
+@use "variables" as *;
+
+// Theme color properties - Dark theme (default)
+:root {
+  color-scheme: dark;
+  --color-bg: #{$dark-bg};
+  --color-bg-secondary: #{$dark-bg-secondary};
+  --color-bg-highlight: #{$dark-bg-highlight};
+  --color-text: #{$dark-text};
+  --color-text-secondary: #{$dark-text-secondary};
+  --color-accent: #{$dark-accent};
+  --color-accent-hover: #{$dark-accent-hover};
+  --color-border: #{$dark-border};
+  --color-code-bg: #{$dark-code-bg};
+  --color-red: #{$dark-red};
+  --color-orange: #{$dark-orange};
+  --color-yellow: #{$dark-yellow};
+  --color-green: #{$dark-green};
+  --color-blue: #{$dark-blue};
+  --color-magenta: #{$dark-magenta};
+}
+
+// Light theme (automatic)
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --color-bg: #{$light-bg};
+    --color-bg-secondary: #{$light-bg-secondary};
+    --color-bg-highlight: #{$light-bg-highlight};
+    --color-text: #{$light-text};
+    --color-text-secondary: #{$light-text-secondary};
+    --color-accent: #{$light-accent};
+    --color-accent-hover: #{$light-accent-hover};
+    --color-border: #{$light-border};
+    --color-code-bg: #{$light-code-bg};
+    --color-red: #{$light-red};
+    --color-orange: #{$light-orange};
+    --color-yellow: #{$light-yellow};
+    --color-green: #{$light-green};
+    --color-blue: #{$light-blue};
+    --color-magenta: #{$light-magenta};
+  }
+}
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Base styles
+html {
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  line-height: $line-height-base;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  line-height: $line-height-heading;
+  font-weight: 600;
+  margin-bottom: $spacing-sm;
+  color: var(--color-text);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+p {
+  margin-bottom: $spacing-sm;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+code {
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  background-color: var(--color-code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre {
+  overflow-x: auto;
+  margin-bottom: $spacing-sm;
+  border-radius: $border-radius;
+  padding: $spacing-sm;
+  background-color: var(--color-code-bg);
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-sm;
+  padding-left: $spacing-lg;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid var(--color-border);
+  padding-left: $spacing-sm;
+  margin: $spacing-md 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+// Horizontal rule
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: $spacing-lg 0;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-sm;
+}
+
+th, td {
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+th {
+  background-color: var(--color-bg-secondary);
+  font-weight: 600;
+}

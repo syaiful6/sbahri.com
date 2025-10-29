@@ -1,0 +1,21 @@
+// Import order matters!
+@use "variables" as *;
+@use "base";
+@use "misc";
+@use "layout";
+@use "projects";
+@use "notes";
+
+// Shiki syntax highlighting overrides
+pre.shiki {
+  padding: $spacing-sm;
+  border-radius: $border-radius;
+  overflow-x: auto;
+  margin-bottom: $spacing-md;
+
+  code {
+    font-family: $font-family-mono;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+}

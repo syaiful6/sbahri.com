@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="note">
+  <header class="note-header">
+    <h1 class="note-title">{{ .Title }}</h1>
+    <div class="note-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+    </div>
+    {{ if .Params.tags }}
+    <div class="tags">
+      {{ range .Params.tags }}
+      <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="note-content">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ if or .PrevInSection .NextInSection }}
+<nav class="pagination">
+  <div>
+    {{ if .PrevInSection }}
+    <a href="{{ .PrevInSection.RelPermalink }}" class="page-link">← {{ .PrevInSection.Title }}</a>
+    {{ end }}
+  </div>
+  <div>
+    {{ if .NextInSection }}
+    <a href="{{ .NextInSection.RelPermalink }}" class="page-link">{{ .NextInSection.Title }} →</a>
+    {{ end }}
+  </div>
+</nav>
+{{ end }}
+{{ end }}

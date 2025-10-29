@@ -1,0 +1,28 @@
+{{ $image := .image }}
+{{ $size := .sizes | default "(min-width: 768px) 400px, 98vw" }}
+{{ $class := .class | default "" }}
+{{ $loading := .loading | default "lazy" }}
+
+{{ if eq $image.MediaType.SubType "svg" }}
+  {{/* SVG images - just display directly without resizing */}}
+  <img src="{{ $image.RelPermalink }}" alt="" class="{{ $class }}" loading="{{ $loading }}">
+{{ else }}
+  {{/* Raster images - create responsive srcset */}}
+  {{ $srcset := "" }}
+  {{ range .photoWidths }}
+  {{- if le . $image.Width }}
+  {{ $resized := $image.Resize (printf "%dx" .) }}
+  {{ $srcset = printf "%s%s %dw, " $srcset $resized.RelPermalink . }}
+  {{ end }}
+  {{ end }}
+
+  <img
+    src="{{ $image.RelPermalink }}"
+    {{ with $srcset }}srcset="{{ . }}"{{ end }}
+    sizes="{{ $size }}"
+    alt=""
+    class="{{ $class }}"
+    loading="{{ $loading }}"
+    width="{{ $image.Width }}"
+    height="{{ $image.Height }}">
+{{ end }}
