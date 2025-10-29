@@ -12,5 +12,8 @@
     "@types/bun": "^1.1.15",
     "sass": "^1.83.5",
     "shiki": "^1.29.1"
+  },
+  "dependencies": {
+    "wrangler": "^4.45.2"
   }
 }

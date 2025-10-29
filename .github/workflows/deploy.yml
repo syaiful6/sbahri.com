@@ -28,6 +28,9 @@ jobs:
       - name: Build site with Hugo
         run: nix develop --command bun run build
 
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
