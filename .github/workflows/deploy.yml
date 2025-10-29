@@ -37,4 +37,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-          command: pages deploy public --project-name=sbahri-blog
+          command: pages deploy public --project-name=sbahri-com
