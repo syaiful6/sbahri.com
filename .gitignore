@@ -11,6 +11,7 @@ bun.lockb
 # Nix
 result
 result-*
+.direnv
 
 # IDE
 .vscode/
