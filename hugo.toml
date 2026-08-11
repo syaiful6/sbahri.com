@@ -1,7 +1,6 @@
 baseURL = 'https://www.sbahri.com/'
 languageCode = 'en-us'
 title = 'Syaiful Bahri'
-theme = 'sbahri'
 
 # Pagination
 [pagination]
@@ -37,14 +36,14 @@ theme = 'sbahri'
     url = "/about/"
     weight = 40
 
-[markup.highlight]
-  style = "tokyonight-night"
-
+# [markup.highlight]
+#   style = "tokyonight-night"
+#
 # Disable Hugo's built-in syntax highlighting
 # We're using Shiki at build-time instead
-# [markup.highlight]
-#   codeFences = false
-#   noClasses = false
+[markup.highlight]
+  codeFences = false
+  noClasses = false
 
 [markup.goldmark.renderer]
   unsafe = true

@@ -4,8 +4,8 @@ import { compile } from "sass";
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 
-const inputFile = "themes/sbahri/assets/scss/main.scss";
-const outputDir = "themes/sbahri/assets/css";
+const inputFile = "assets/scss/main.scss";
+const outputDir = "assets/css";
 const outputFile = join(outputDir, "main.css");
 
 console.log("Building CSS...");

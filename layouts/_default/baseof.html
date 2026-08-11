@@ -17,6 +17,9 @@
   {{ printf `
   <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
+  {{ if hugo.IsProduction }}
+    <script defer src="https://www.thatiq.com/static/tracker.js" data-website="019ff19c-9f48-7000-93b8-888fc5675f01"></script>
+  {{ end }}
 </head>
 
 <body>
