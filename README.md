@@ -66,10 +66,10 @@ The generated site will be in the `public/` directory.
 
 ## Theme Development
 
-The custom theme is located in `themes/sbahri/` with the following structure:
+This site uses Hugo's flat layout — no `themes/` directory. Templates and styles live directly at the project root:
 
 ```
-themes/sbahri/
+.
 ├── assets/
 │   ├── scss/           # SCSS source files
 │   │   ├── _variables.scss
@@ -77,21 +77,20 @@ themes/sbahri/
 │   │   ├── _layout.scss
 │   │   └── main.scss
 │   └── css/            # Generated CSS (gitignored)
-├── layouts/
-│   ├── _default/
-│   │   ├── baseof.html
-│   │   ├── list.html
-│   │   └── single.html
-│   ├── partials/
-│   │   ├── header.html
-│   │   └── footer.html
-│   └── index.html
-└── theme.toml
+└── layouts/
+    ├── _default/
+    │   ├── baseof.html
+    │   ├── list.html
+    │   └── single.html
+    ├── partials/
+    │   ├── header.html
+    │   └── footer.html
+    └── index.html
 ```
 
 ### Styling
 
-Edit SCSS files in `themes/sbahri/assets/scss/` and run:
+Edit SCSS files in `assets/scss/` and run:
 
 ```bash
 bun run build:css
@@ -142,10 +141,9 @@ Cloudflare Pages fully supports custom domains:
 ├── scripts/                   # Build scripts
 │   ├── build-css.ts          # SCSS compilation
 │   └── highlight.ts           # Shiki syntax highlighting
-├── themes/sbahri/             # Custom theme
-│   ├── assets/
-│   ├── layouts/
-│   └── static/
+├── layouts/                   # Hugo templates
+├── assets/                    # SCSS/JS sources
+├── static/                    # Static files copied as-is
 ├── flake.nix                  # Nix flake configuration
 ├── package.json               # Bun dependencies & scripts
 ├── hugo.toml                  # Hugo configuration

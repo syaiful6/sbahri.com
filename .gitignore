@@ -2,7 +2,7 @@
 public/
 resources/_gen/
 .hugo_build.lock
-themes/sbahri/assets/css/
+assets/css/
 
 # Node/Bun
 node_modules/
