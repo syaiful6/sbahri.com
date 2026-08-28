@@ -116,7 +116,15 @@
 }
 
 // Single post
+.posts,
+.page {
+  --gap: 4vw;
+}
+
 .post {
+  max-width: min(var(--content-width, 720px), 100% - var(--gap) * 2);
+  margin: 0 auto;
+
   .post-header {
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-md;
@@ -137,8 +145,6 @@
   }
 
   .post-content {
-    line-height: 1.8;
-
     h2,
     h3,
     h4,

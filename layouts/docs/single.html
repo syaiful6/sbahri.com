@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{ $projectID := .Params.project }}
+{{ $project := .Site.GetPage (printf "/projects/%s" $projectID) }}
+{{ $docs := sort (where (where .Site.RegularPages "Section" "docs") "Params.project" $projectID) "Weight" }}
+{{ $currentIndex := 0 }}
+{{ range $index, $doc := $docs }}
+  {{ if eq $doc.RelPermalink $.RelPermalink }}{{ $currentIndex = $index }}{{ end }}
+{{ end }}
+
+<div class="docs-layout">
+  <aside class="docs-sidebar" aria-label="Documentation navigation">
+    {{ with $project }}
+    <a class="docs-project-link" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+    <h2>{{ .Title }} docs</h2>
+    {{ else }}
+    <h2>Documentation</h2>
+    {{ end }}
+
+    <nav>
+      <ol class="docs-nav-list">
+        {{ range $docs }}
+        <li>
+          <a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} class="active" aria-current="page"{{ end }}>
+            {{ .Title }}
+          </a>
+        </li>
+        {{ end }}
+      </ol>
+    </nav>
+  </aside>
+
+  <article class="post docs-article">
+    <header class="post-header">
+      {{ with $project }}<p class="docs-eyebrow">{{ .Title }} documentation</p>{{ end }}
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="docs-description">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+    <nav class="docs-pagination" aria-label="Documentation pages">
+      {{ if gt $currentIndex 0 }}
+        {{ with index $docs (sub $currentIndex 1) }}<a href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+      {{ end }}
+      {{ if lt (add $currentIndex 1) (len $docs) }}
+        {{ with index $docs (add $currentIndex 1) }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+      {{ end }}
+    </nav>
+  </article>
+</div>
+{{ end }}

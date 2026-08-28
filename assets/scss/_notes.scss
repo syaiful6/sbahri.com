@@ -1,5 +1,9 @@
 @use "variables" as *;
 
+.notes {
+  --gap: 4vw;
+}
+
 // Notes list
 .notes-list {
   list-style: none;
@@ -37,6 +41,9 @@
 
 // Single note page
 .note {
+  max-width: min(var(--content-width, 720px), 100% - var(--gap) * 2);
+  margin: 0 auto;
+
   .note-header {
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-md;

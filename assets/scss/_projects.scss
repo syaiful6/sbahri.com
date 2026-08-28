@@ -1,5 +1,9 @@
 @use "variables" as *;
 
+.projects {
+  --gap: 4vw;
+}
+
 // Projects grid
 .projects-grid {
   display: grid;
@@ -105,6 +109,9 @@
 
 // Single project page
 .project {
+  max-width: min(var(--content-width, 720px), 100% - var(--gap) * 2);
+  margin: 0 auto;
+
   .project-header {
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-md;

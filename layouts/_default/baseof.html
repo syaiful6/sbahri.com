@@ -22,7 +22,7 @@
   {{ end }}
 </head>
 
-<body>
+<body class="{{ if .IsHome }}home{{ else }}{{ .Type }}{{ end }}">
   {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
 
   <main class="main">
