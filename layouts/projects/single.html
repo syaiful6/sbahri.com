@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{ $projectID := .File.ContentBaseName }}
+{{ $docs := where (where .Site.RegularPages "Section" "docs") "Params.project" $projectID }}
 <article class="project">
   <header class="project-header">
     <h1 class="project-title">{{ .Title }}</h1>
@@ -20,7 +22,7 @@
     </div>
     {{ end }}
 
-    {{ if or .Params.github_url .Params.demo_url }}
+    {{ if or .Params.github_url .Params.demo_url .Params.documentation_url $docs }}
     <div class="project-links-header">
       {{ if .Params.github_url }}
       <a href="{{ .Params.github_url }}" class="project-link-btn" target="_blank" rel="noopener">
@@ -38,6 +40,11 @@
         Documentation
       </a>
       {{ end }}
+      {{ with index (sort $docs "Weight") 0 }}
+      <a href="{{ .RelPermalink }}" class="project-link-btn project-link-btn__documentation">
+        Read the docs
+      </a>
+      {{ end }}
     </div>
     {{ end }}
   </header>
@@ -45,6 +52,21 @@
   <div class="project-content">
     {{ .Content }}
   </div>
+
+  {{ if $docs }}
+  <aside class="project-docs" aria-labelledby="project-docs-title">
+    <h2 id="project-docs-title">Documentation</h2>
+    <p>Guides and recipes for {{ .Title }}.</p>
+    <ol class="docs-list">
+      {{ range sort $docs "Weight" }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ with .Description }}<span>{{ . }}</span>{{ end }}
+      </li>
+      {{ end }}
+    </ol>
+  </aside>
+  {{ end }}
 </article>
 
 {{ if or .PrevInSection .NextInSection }}

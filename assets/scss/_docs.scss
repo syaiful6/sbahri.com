@@ -1,0 +1,132 @@
+@use "variables" as *;
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: $spacing-xl;
+  align-items: start;
+}
+
+.docs-sidebar {
+  position: sticky;
+  top: $spacing-md;
+  padding: $spacing-md;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius;
+
+  h2 {
+    margin: $spacing-sm 0;
+    font-size: 1rem;
+  }
+}
+
+.docs-project-link,
+.docs-eyebrow {
+  color: var(--color-text-secondary);
+  font-size: $font-size-small;
+}
+
+.docs-eyebrow {
+  margin-bottom: $spacing-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.docs-description {
+  margin-top: $spacing-sm;
+  color: var(--color-text-secondary);
+}
+
+.docs-nav-list,
+.docs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.docs-nav-list {
+  display: grid;
+  gap: $spacing-xs;
+
+  a {
+    display: block;
+    padding: $spacing-xs $spacing-sm;
+    border-left: 2px solid transparent;
+    color: var(--color-text);
+
+    &:hover,
+    &.active {
+      color: var(--color-accent);
+      border-left-color: var(--color-accent);
+      background: var(--color-bg);
+    }
+  }
+}
+
+.docs-article {
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.docs-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid var(--color-border);
+
+  a:last-child {
+    margin-left: auto;
+  }
+}
+
+.project-docs,
+.docs-group {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid var(--color-border);
+
+  h2 {
+    margin-bottom: $spacing-xs;
+  }
+}
+
+.docs-list {
+  display: grid;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+
+  li {
+    padding: $spacing-sm $spacing-md;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: $border-radius;
+  }
+
+  a {
+    font-weight: 700;
+  }
+
+  span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--color-text-secondary);
+    font-size: $font-size-small;
+  }
+}
+
+@media (max-width: 720px) {
+  .docs-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: $spacing-lg;
+  }
+
+  .docs-sidebar {
+    position: static;
+    width: 100%;
+  }
+}
