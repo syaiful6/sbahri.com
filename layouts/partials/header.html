@@ -1,7 +1,19 @@
 <header class="header">
   <div class="container">
     <h1 class="site-title">
-      <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+      <a href="{{ "/" | relURL }}">
+        <img src="/apple-touch-icon.png" alt="{{ .Site.Title }} Logo" class="logo">
+        <span class="site-title__sep">/</span>
+        <span class="site-title__text">
+          {{- if .IsHome -}}
+            {{ .Site.Title }}
+          {{- else if eq .Type "page" -}}
+            Pages
+          {{- else -}}
+            {{ .Type | humanize }}
+          {{- end -}}
+        </span>
+      </a>
     </h1>
     <nav class="nav">
       {{ range .Site.Menus.main }}
