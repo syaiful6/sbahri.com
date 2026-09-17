@@ -16,10 +16,18 @@
   .site-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-xl;
 
     a {
       color: var(--color-text);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: $spacing-xs;
+
+      .logo {
+        max-width: 40px;
+      }
 
       &:hover {
         color: var(--color-accent);
@@ -158,10 +166,12 @@
 
 // Tags
 .tags {
-  display: flex;
-  gap: $spacing-xs;
-  flex-wrap: wrap;
-  margin-top: $spacing-sm;
+  &:not(body) {
+    display: flex;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+    margin-top: $spacing-sm;
+  }
 
   .tag {
     display: inline-block;
