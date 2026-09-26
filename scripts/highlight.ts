@@ -61,6 +61,8 @@ export async function createSiteHighlighter(): Promise<{ highlighter: Highlighte
       "bash",
       "shell",
       "nix",
+      "hcl",
+      "docker",
       "markdown",
       "css",
       "html",
