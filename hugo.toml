@@ -7,9 +7,13 @@ title = 'Syaiful Bahri'
   pagerSize = 10
 
 [params]
+  dateFormat = "January 2, 2006"
+  info = "Professional software engineer, father and amateur chess player."
   description = "Sharing my journey in coding, technology, and life."
   author = "Syaiful Bahri"
   photoWidths = [300, 600, 800, 1200]
+  twitter = "kicauipul"
+  avatarurl = "/apple-touch-icon.png"
 
 [menu]
   [[menu.main]]
